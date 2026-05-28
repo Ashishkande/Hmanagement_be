@@ -14,8 +14,6 @@ EMAIL_FROM = os.getenv("EMAIL_FROM")
 
 def send_email(receiver_email, otp):
 
-    print("EMAIL FUNCTION STARTED")
-
     subject = "OTP Verification"
 
     body = f"Your OTP is {otp}"
@@ -33,14 +31,12 @@ def send_email(receiver_email, otp):
             EMAIL_PORT
         )
 
-        print("SMTP CONNECTED")
 
         server.login(
             EMAIL_HOST_USER,
             EMAIL_HOST_PASSWORD
         )
 
-        print("LOGIN SUCCESS")
 
         server.sendmail(
             EMAIL_FROM,
@@ -48,11 +44,8 @@ def send_email(receiver_email, otp):
             msg.as_string()
         )
 
-        print("MAIL SENT SUCCESSFULLY")
 
         server.quit()
 
     except Exception as e:
-
-        print("EMAIL ERROR")
         print(str(e))
